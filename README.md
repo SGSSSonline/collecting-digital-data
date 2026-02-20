@@ -10,7 +10,7 @@ This course is suitable for social science researchers from any methodological b
 
 ## Course materials
 
-This repository houses the materials underpinning the one-day course run by [Dr Diarmuid McDonnell](https://uk-third-sector-database.github.io/meet-the-team/), Braw Data Ltd / Gradel Institute of Charity, University of Oxford. The course was first run in February 2026.
+This repository houses the materials underpinning the one-day course run by [Dr Diarmuid McDonnell](https://www.gradelinstituteofcharity.co.uk/diarmuid-mcdonnell), Braw Data Ltd / Gradel Institute of Charity, University of Oxford. The course was first run in February 2026.
 
 ### Programme
 
@@ -63,10 +63,20 @@ You need a Google account to be able to run the code notebooks. Once you have a 
 * [installation](./installation) - Guidance on installing software on your own machines.
 * [reading](./reading) - Lists of interesting and relevant reading materials.
 
+## Instructor
+
+**Dr Diarmuid McDonnell**
+Director, [Braw Data Ltd](https://www.brawdata.co.uk)
+Visiting Fellow, [Gradel Institute of Charity](https://www.gradelinstituteofcharity.co.uk/diarmuid-mcdonnell), University of Oxford
+
 ## Acknowledgements
 
 I am grateful to the Scottish Graduate School of Social Sciences (SGSSS) for funding and organising this course.
 
+## Licence
+
+These materials are licensed under a [Creative Commons Attribution 4.0 International Licence (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
+
 ## Further information
 
-Please do not hesitate to get in contact if you have queries, criticisms or ideas regarding these materials: [Dr Diarmuid McDonnell](mailto:diarmuid.mcdonnell@brawdata.com)
+Please do not hesitate to get in contact if you have queries, criticisms or ideas regarding these materials: [Dr Diarmuid McDonnell](mailto:diarmuid@brawdata.com)
