@@ -1,0 +1,72 @@
+![SGSSS Logo](img/SGSSS_Stacked.png)
+
+# Collecting Digital Data: The Role of Web-scraping and APIs
+
+## Introduction
+
+Computational methods are transforming research practice across the disciplines. In this one-day course you will learn how to apply computational methods for the collection and management of data stored on the web. Using Python and R, you will develop skills in collecting data from websites and online databases (APIs); handle a mixture of structured (JSON) and unstructured (raw text) data; and explore how LLMs can support these activities.
+
+This course is suitable for social science researchers from any methodological background (e.g., qualitative, quantitative) and who are new to the use of computational methods in their research. Participants are not expected to have any experience of using Python or R before attending this course.
+
+## Course materials
+
+This repository houses the materials underpinning the one-day course run by [Dr Diarmuid McDonnell](https://uk-third-sector-database.github.io/meet-the-team/), Braw Data Ltd / Gradel Institute of Charity, University of Oxford. The course was first run in February 2026.
+
+### Programme
+
+| Time | Session | Format |
+|------|---------|--------|
+| 10:00-10:30 | Lecture 1: Welcome & How the Web Works | Lecture |
+| 10:30-11:15 | Practical 1: Web Scraping | Colab notebook |
+| 11:15-11:30 | Break | |
+| 11:30-11:45 | Lecture 2: What Are APIs? | Lecture |
+| 11:45-12:45 | Practical 2: UK Police API Deep-Dive | Colab notebook |
+| 12:45-13:30 | Lunch | |
+| 13:30-13:45 | Lecture 3: API Landscape Survey | Lecture |
+| 13:45-14:45 | Practical 3: API Challenge | Colab notebook |
+| 14:45-15:00 | Break | |
+| 15:00-15:15 | Lecture 4: LLMs as Coding Assistants | Lecture |
+| 15:15-15:50 | Practical 4: LLM Showdown | Colab notebook |
+| 15:50-16:00 | Wrap-up & Q&A | |
+
+### Interactive coding materials
+
+The practicals contain Python and R code for you to execute.
+
+You can complete the lessons online without the need to install or download anything. Simply click on the relevant link for each lesson below.
+
+You need a Google account to be able to run the code notebooks. Once you have a [Google account](https://support.google.com/accounts/answer/27441?hl=en) then please click the *Open in Colab* link.
+
+#### Python
+
+* Practical 1: Web Scraping [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SGSSSonline/collecting-digital-data/blob/main/code/practical-1-web-scraping-2026-02-24-Python.ipynb)
+* Practical 2: UK Police API [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SGSSSonline/collecting-digital-data/blob/main/code/practical-2-uk-police-api-2026-02-24-Python.ipynb)
+* Practical 3: API Challenge [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SGSSSonline/collecting-digital-data/blob/main/code/practical-3-api-challenge-2026-02-24-Python.ipynb)
+* Practical 4: LLM Showdown [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SGSSSonline/collecting-digital-data/blob/main/code/practical-4-llm-showdown-2026-02-24-Python.ipynb)
+
+#### R
+
+* Practical 1: Web Scraping [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SGSSSonline/collecting-digital-data/blob/main/code/practical-1-web-scraping-2026-02-24-R.ipynb)
+* Practical 2: UK Police API [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SGSSSonline/collecting-digital-data/blob/main/code/practical-2-uk-police-api-2026-02-24-R.ipynb)
+* Practical 3: API Challenge [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SGSSSonline/collecting-digital-data/blob/main/code/practical-3-api-challenge-2026-02-24-R.ipynb)
+* Practical 4: LLM Showdown [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SGSSSonline/collecting-digital-data/blob/main/code/practical-4-llm-showdown-2026-02-24-R.ipynb)
+
+### Presentations
+
+* [Lecture 1: Welcome & How the Web Works](./presentations/lecture-1-welcome-and-how-the-web-works.pdf)
+* [Lecture 2: What Are APIs?](./presentations/lecture-2-what-are-apis.pdf)
+* [Lecture 3: API Landscape Survey](./presentations/lecture-3-api-landscape.pdf)
+* [Lecture 4: LLMs as Coding Assistants](./presentations/lecture-4-llms-as-coding-assistants.pdf)
+
+### Other materials
+
+* [installation](./installation) - Guidance on installing software on your own machines.
+* [reading](./reading) - Lists of interesting and relevant reading materials.
+
+## Acknowledgements
+
+I am grateful to the Scottish Graduate School of Social Sciences (SGSSS) for funding and organising this course.
+
+## Further information
+
+Please do not hesitate to get in contact if you have queries, criticisms or ideas regarding these materials: [Dr Diarmuid McDonnell](mailto:diarmuid.mcdonnell@brawdata.com)
