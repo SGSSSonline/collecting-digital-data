@@ -113,11 +113,11 @@
         };
 
         % Braces and labels underneath
-        \draw[brace, sgsssGreen] (0,-0.35) -- (3.55,-0.35)
+        \draw[brace, sgsssGreen] (0,-0.55) -- (3.55,-0.55)
             node[below=8pt, midway, label, text=sgsssGreen] {Base URL};
-        \draw[brace, sgsssBlack] (3.55,-0.35) -- (6.35,-0.35)
+        \draw[brace, sgsssBlack] (3.55,-0.55) -- (6.35,-0.55)
             node[below=8pt, midway, label, text=sgsssBlack] {Endpoint};
-        \draw[brace, sgsssMagenta] (6.35,-0.35) -- (12.65,-0.35)
+        \draw[brace, sgsssMagenta] (6.35,-0.55) -- (12.65,-0.55)
             node[below=8pt, midway, label, text=sgsssMagenta] {Query parameters\\{\scriptsize key=value pairs joined by \&}};
 
         % Headers and Auth boxes
@@ -168,62 +168,29 @@
 % -------------------------------------------------------
 % Slide 6: JSON deep-dive
 % -------------------------------------------------------
-\begin{frame}[fragile]{JSON Deep-Dive}
+\begin{frame}{JSON Deep-Dive}
     \begin{columns}[T]
         \begin{column}{0.48\textwidth}
-            \textbf{Structure}\\[0.2cm]
-            \begin{tikzpicture}[
-                box/.style={draw, rounded corners=3pt, thick, inner sep=6pt},
-            ]
-                % Outer object
-                \node[box, draw=sgsssBlack, fill=sgsssLightGrey, minimum width=6.2cm, minimum height=4.5cm] (outer) at (0,0) {};
-                \node[anchor=north west, font=\ttfamily\bfseries] at ([shift={(3pt,-3pt)}]outer.north west) {\textcolor{sgsssBlack}{\{}};
-                \node[anchor=south east, font=\ttfamily\bfseries] at ([shift={(-3pt,3pt)}]outer.south east) {\textcolor{sgsssBlack}{\}}};
+            \colorbox{sgsssLightGrey}{\parbox{0.92\textwidth}{\ttfamily\small
+            \{\\
+            \quad \textcolor{sgsssGreen}{"type"}: \textcolor{sgsssMagenta}{"Person"},\\
+            \quad \textcolor{sgsssGreen}{"age\_range"}: \textcolor{sgsssMagenta}{"18-24"},\\
+            \quad \textcolor{sgsssGreen}{"legislation"}: [\\
+            \qquad \{\\
+            \qquad\quad \textcolor{sgsssGreen}{"name"}: \textcolor{sgsssMagenta}{"John Doe"},\\
+            \qquad\quad \textcolor{sgsssGreen}{"age"}: \textcolor{sgsssMagenta}{21}\\
+            \qquad \}\\
+            \quad ],\\
+            \quad \textcolor{sgsssGreen}{"outcome"}: \textcolor{sgsssMagenta}{true}\\
+            \}
+            }}
 
-                % Key-value pairs
-                \node[anchor=west, font=\ttfamily\small] at (-2.6,1.4) {%
-                    \textcolor{sgsssGreen}{"type"}: \textcolor{sgsssMagenta}{"Person"}%
-                };
-                \node[anchor=west, font=\ttfamily\small] at (-2.6,0.8) {%
-                    \textcolor{sgsssGreen}{"age\_range"}: \textcolor{sgsssMagenta}{"18-24"}%
-                };
-
-                % Array box
-                \node[box, draw=none, fill=sgsssMagenta!5, minimum width=5cm, minimum height=1.8cm] (arr) at (0.2,-0.6) {};
-                \node[anchor=west, font=\ttfamily\small] at (-2.6,0.15) {%
-                    \textcolor{sgsssGreen}{"legislation"}:%
-                };
-                \node[anchor=north west, font=\ttfamily\bfseries] at ([shift={(3pt,-3pt)}]arr.north west) {\textcolor{sgsssMagenta}{[}};
-                \node[anchor=south east, font=\ttfamily\bfseries] at ([shift={(-3pt,3pt)}]arr.south east) {\textcolor{sgsssMagenta}{]}};
-
-                % Nested object inside array
-                \node[box, draw=none, fill=sgsssGreen!8, minimum width=4cm, minimum height=0.8cm] (nested) at (0.2,-0.6) {};
-                \node[font=\ttfamily\scriptsize] at (0.2,-0.6) {%
-                    \textcolor{sgsssGreen}{"name"}: \textcolor{sgsssMagenta}{"PACE (1984)"}%
-                };
-            \end{tikzpicture}
-
-            \vspace{0.2cm}
+            \vspace{0.3cm}
             {\footnotesize
             \textcolor{sgsssGreen}{\rule{0.8cm}{2pt}} Keys \quad
             \textcolor{sgsssMagenta}{\rule{0.8cm}{2pt}} Values}
         \end{column}
         \begin{column}{0.48\textwidth}
-            \textbf{As code}
-            \begin{minted}[fontsize=\scriptsize]{json}
-{
-  "type": "Person",
-  "age_range": "18-24",
-  "legislation": [
-    {
-      "name": "PACE (1984)"
-    }
-  ],
-  "outcome": true
-}
-\end{minted}
-
-            \vspace{0.2cm}
             {\small \textbf{JSON types:}}
             \begin{itemize}
                 \footnotesize
@@ -231,6 +198,9 @@
                 \item \textbf{Array} \texttt{[]} --- ordered list
                 \item \textbf{String}, \textbf{Number}, \textbf{Boolean}, \textbf{null}
             \end{itemize}
+
+            \vspace{0.3cm}
+            {\small JSON is the most common format for API responses. Each record is a set of \textcolor{sgsssGreen}{\textbf{key}}--\textcolor{sgsssMagenta}{\textbf{value}} pairs. Values can be strings, numbers, booleans, arrays, or nested objects.}
         \end{column}
     \end{columns}
 \end{frame}
