@@ -113,11 +113,11 @@
         };
 
         % Braces and labels underneath
-        \draw[brace, sgsssGreen] (0,-0.15) -- (3.55,-0.15)
+        \draw[brace, sgsssGreen] (0,-0.35) -- (3.55,-0.35)
             node[below=8pt, midway, label, text=sgsssGreen] {Base URL};
-        \draw[brace, sgsssBlack] (3.55,-0.15) -- (6.35,-0.15)
+        \draw[brace, sgsssBlack] (3.55,-0.35) -- (6.35,-0.35)
             node[below=8pt, midway, label, text=sgsssBlack] {Endpoint};
-        \draw[brace, sgsssMagenta] (6.35,-0.15) -- (12.65,-0.15)
+        \draw[brace, sgsssMagenta] (6.35,-0.35) -- (12.65,-0.35)
             node[below=8pt, midway, label, text=sgsssMagenta] {Query parameters\\{\scriptsize key=value pairs joined by \&}};
 
         % Headers and Auth boxes
@@ -189,7 +189,7 @@
                 };
 
                 % Array box
-                \node[box, draw=sgsssMagenta, fill=sgsssMagenta!5, minimum width=5cm, minimum height=1.8cm] (arr) at (0.2,-0.6) {};
+                \node[box, draw=none, fill=sgsssMagenta!5, minimum width=5cm, minimum height=1.8cm] (arr) at (0.2,-0.6) {};
                 \node[anchor=west, font=\ttfamily\small] at (-2.6,0.15) {%
                     \textcolor{sgsssGreen}{"legislation"}:%
                 };
@@ -197,7 +197,7 @@
                 \node[anchor=south east, font=\ttfamily\bfseries] at ([shift={(-3pt,3pt)}]arr.south east) {\textcolor{sgsssMagenta}{]}};
 
                 % Nested object inside array
-                \node[box, draw=sgsssGreen, fill=sgsssGreen!8, minimum width=4cm, minimum height=0.8cm] (nested) at (0.2,-0.6) {};
+                \node[box, draw=none, fill=sgsssGreen!8, minimum width=4cm, minimum height=0.8cm] (nested) at (0.2,-0.6) {};
                 \node[font=\ttfamily\scriptsize] at (0.2,-0.6) {%
                     \textcolor{sgsssGreen}{"name"}: \textcolor{sgsssMagenta}{"PACE (1984)"}%
                 };

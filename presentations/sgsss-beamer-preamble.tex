@@ -21,6 +21,8 @@
 \setbeamercolor{block body}{bg=sgsssLightGrey, fg=sgsssBlack}
 \setbeamercolor{block title example}{bg=sgsssGreen, fg=sgsssWhite}
 \setbeamercolor{block body example}{bg=sgsssLightGrey, fg=sgsssBlack}
+\setbeamercolor{block title alerted}{bg=sgsssMagenta, fg=sgsssWhite}
+\setbeamercolor{block body alerted}{bg=sgsssLightGrey, fg=sgsssBlack}
 \setbeamercolor{normal text}{fg=sgsssBlack}
 
 % --- Fonts ---
@@ -31,7 +33,19 @@
 
 % --- Packages ---
 \usepackage{graphicx}
-\usepackage{hyperref}
+\usepackage{bookmark}
+\hypersetup{
+    bookmarks=true,
+    bookmarksopen=true,
+    bookmarksdepth=2,
+    pdfpagemode=UseOutlines,
+}
+% --- PDF bookmarks for each frame title ---
+\makeatletter
+\apptocmd{\beamer@@frametitle}{%
+  \only<1>{\bookmark[page=\the\c@page,level=1]{#1}}%
+}{}{}
+\makeatother
 \usepackage{array}
 \usepackage{booktabs}
 \usepackage{minted}
