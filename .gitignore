@@ -29,6 +29,9 @@ desktop.ini
 downloads/
 data/
 
+# Internal docs (design docs, plans)
+docs/
+
 # Admin documents (not for public distribution)
 admin/
 
