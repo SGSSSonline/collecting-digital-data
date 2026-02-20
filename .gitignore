@@ -1,0 +1,36 @@
+# LaTeX build artifacts
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.vrb
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+_minted-*/
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Downloads created by notebooks
+downloads/
+data/
+
+# Admin documents (not for public distribution)
+admin/
+
+# Previous course materials (reference only, from SGSSSonline/text-analysis)
+previous-course/
