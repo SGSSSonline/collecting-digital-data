@@ -663,7 +663,9 @@ Visiting Fellow, Gradel Institute of Charity, University of Oxford
 [As appropriate]
 ```
 
-**Note:** Colab badge URLs will need to be updated once notebooks are pushed to a GitHub repository. Use placeholder format: `https://colab.research.google.com/github/OWNER/REPO/blob/main/code/FILENAME.ipynb`
+**Colab badge URL pattern:** `https://colab.research.google.com/github/SGSSSonline/collecting-digital-data/blob/main/code/FILENAME.ipynb`
+
+**GitHub repo:** `https://github.com/SGSSSonline/collecting-digital-data` (private; flip to public before 24 Feb 2026)
 
 **Step 2: Verify markdown renders correctly**
 
