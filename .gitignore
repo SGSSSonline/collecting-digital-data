@@ -1,3 +1,6 @@
+# LaTeX source files
+*.tex
+
 # LaTeX build artifacts
 *.aux
 *.log
