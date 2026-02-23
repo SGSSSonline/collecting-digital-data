@@ -44,7 +44,7 @@ Bail, C. (2024). *Can Generative AI Improve Social Science?* Proceedings of the 
 
 Argyle, L. P. et al. (2023). *Out of One, Many: Using Language Models to Simulate Human Samples.* Political Analysis. <a href="https://doi.org/10.1017/pan.2023.2" target=_blank>https://doi.org/10.1017/pan.2023.2</a>
 
-Spirling, A. (2023). *Why open-source generative AI models are an ethical imperative for social science.* Nature Computational Science. <a href="https://doi.org/10.1038/s43588-023-00560-0" target=_blank>https://doi.org/10.1038/s43588-023-00560-0</a>
+Spirling, A. (2023). *Why open-source generative AI models are an ethical imperative for social science.* Nature. <a href="https://doi.org/10.1038/d41586-023-01295-4" target=_blank>https://doi.org/10.1038/d41586-023-01295-4</a>
 
 ### Python
 
