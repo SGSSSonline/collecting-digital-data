@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instructor's Guide — Collecting Digital Data (SGSSS)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500&family=Fira+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --magenta: #A3217A;
+            --magenta-light: #A3217A1A;
+            --green: #2D6A3F;
+            --green-light: #2D6A3F1A;
+            --black: #1D1D1B;
+            --white: #FFFFFF;
+            --light-grey: #F5F5F5;
+            --mid-grey: #E0E0E0;
+            --body-font: 'Fira Sans', 'Segoe UI', sans-serif;
+            --mono-font: 'Fira Mono', 'Consolas', monospace;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--body-font);
+            color: var(--black);
+            background: var(--white);
+            line-height: 1.65;
+            font-size: 16px;
+        }
+
+        /* ---- Header ---- */
+        header {
+            background: var(--magenta);
+            color: var(--white);
+            padding: 2.5rem 2rem 2rem;
+            text-align: center;
+        }
+        header img {
+            height: 80px;
+            margin-bottom: 1.2rem;
+            filter: brightness(0) invert(1);
+        }
+        header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.3rem;
+        }
+        header .subtitle {
+            font-size: 1.1rem;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+        header .meta {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        /* ---- Navigation ---- */
+        nav {
+            background: var(--light-grey);
+            border-bottom: 2px solid var(--mid-grey);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav ol {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem 1.5rem;
+            max-width: 960px;
+            margin: 0 auto;
+            counter-reset: nav-counter;
+        }
+        nav li {
+            counter-increment: nav-counter;
+        }
+        nav li::before {
+            content: counter(nav-counter) ".";
+            font-weight: 600;
+            color: var(--magenta);
+            margin-right: 0.3rem;
+        }
+        nav a {
+            color: var(--black);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        nav a:hover { color: var(--magenta); }
+
+        /* ---- Main content ---- */
+        main {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--magenta);
+            border-bottom: 3px solid var(--green);
+            padding-bottom: 0.4rem;
+            margin-bottom: 1.2rem;
+        }
+
+        h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--green);
+            margin: 1.5rem 0 0.6rem;
+        }
+
+        h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--black);
+            margin: 1rem 0 0.4rem;
+        }
+
+        p { margin-bottom: 0.8rem; }
+
+        ul, ol {
+            margin: 0.5rem 0 1rem 1.5rem;
+        }
+        li { margin-bottom: 0.35rem; }
+
+        strong { font-weight: 600; }
+
+        code {
+            font-family: var(--mono-font);
+            font-size: 0.88em;
+            background: var(--light-grey);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+        }
+
+        /* ---- Tables ---- */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0 1.5rem;
+            font-size: 0.92rem;
+        }
+        thead th {
+            background: var(--magenta);
+            color: var(--white);
+            font-weight: 600;
+            text-align: left;
+            padding: 0.6rem 0.8rem;
+        }
+        tbody td {
+            padding: 0.55rem 0.8rem;
+            border-bottom: 1px solid var(--mid-grey);
+            vertical-align: top;
+        }
+        tbody tr:nth-child(even) { background: var(--light-grey); }
+
+        /* ---- Callout boxes ---- */
+        .callout {
+            border-left: 4px solid;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0 1.5rem;
+            border-radius: 0 6px 6px 0;
+        }
+        .callout-magenta {
+            border-color: var(--magenta);
+            background: var(--magenta-light);
+        }
+        .callout-green {
+            border-color: var(--green);
+            background: var(--green-light);
+        }
+        .callout .callout-title {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+        .callout-magenta .callout-title { color: var(--magenta); }
+        .callout-green .callout-title { color: var(--green); }
+
+        /* ---- Timeline/schedule ---- */
+        .schedule-block {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 0 1rem;
+            margin-bottom: 0.6rem;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid var(--mid-grey);
+        }
+        .schedule-block:last-child { border-bottom: none; }
+        .schedule-time {
+            font-family: var(--mono-font);
+            font-size: 0.85rem;
+            color: var(--magenta);
+            font-weight: 500;
+            padding-top: 0.1rem;
+        }
+        .schedule-content .session-name {
+            font-weight: 600;
+        }
+        .schedule-content .session-detail {
+            font-size: 0.88rem;
+            color: #555;
+        }
+
+        /* ---- Pedagogy diagram ---- */
+        .pedagogy-cycle {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
+        }
+        .pedagogy-step {
+            text-align: center;
+            padding: 1rem 1.2rem;
+            flex: 1;
+            min-width: 140px;
+            max-width: 180px;
+            position: relative;
+        }
+        .pedagogy-step .step-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin: 0 auto 0.5rem;
+            color: var(--white);
+        }
+        .pedagogy-step:nth-child(odd) .step-icon { background: var(--magenta); }
+        .pedagogy-step:nth-child(even) .step-icon { background: var(--green); }
+        .pedagogy-step .step-label {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .pedagogy-step .step-desc {
+            font-size: 0.8rem;
+            color: #555;
+            margin-top: 0.2rem;
+        }
+        .pedagogy-arrow {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            color: var(--mid-grey);
+            padding-top: 0.5rem;
+        }
+
+        /* ---- File tree ---- */
+        .file-tree {
+            font-family: var(--mono-font);
+            font-size: 0.85rem;
+            background: var(--light-grey);
+            padding: 1.2rem 1.5rem;
+            border-radius: 6px;
+            line-height: 1.8;
+            overflow-x: auto;
+        }
+
+        /* ---- Footer ---- */
+        footer {
+            background: var(--light-grey);
+            border-top: 3px solid var(--green);
+            padding: 1.5rem 2rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #666;
+        }
+        footer a { color: var(--magenta); }
+
+        /* ---- Print ---- */
+        @media print {
+            nav { display: none; }
+            header { padding: 1rem; }
+            main { padding: 1rem; }
+            .callout { break-inside: avoid; }
+            table { break-inside: avoid; }
+        }
+
+        @media (max-width: 700px) {
+            header h1 { font-size: 1.5rem; }
+            nav ol { flex-direction: column; gap: 0.4rem; }
+            .schedule-block { grid-template-columns: 1fr; }
+            .schedule-time { margin-bottom: 0.2rem; }
+            .pedagogy-cycle { flex-direction: column; align-items: center; }
+            .pedagogy-arrow { transform: rotate(90deg); }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="../img/SGSSS_Stacked.png" alt="SGSSS Logo">
+    <h1>Instructor's Guide</h1>
+    <div class="subtitle">Collecting Digital Data: The Role of Web-scraping and APIs</div>
+    <div class="meta">SGSSS Training Course &middot; Dr Diarmuid McDonnell &middot; One-day online workshop</div>
+</header>
+
+<nav>
+    <ol>
+        <li><a href="#nutshell">The Course in a Nutshell</a></li>
+        <li><a href="#components">Course Components</a></li>
+        <li><a href="#running">How to Run the Course</a></li>
+        <li><a href="#pedagogy">Pedagogy</a></li>
+        <li><a href="#improvement">Areas for Improvement</a></li>
+    </ol>
+</nav>
+
+<main>
+
+<!-- ============================================================ -->
+<!-- 1. THE COURSE IN A NUTSHELL -->
+<!-- ============================================================ -->
+<section id="nutshell">
+    <h2>1. The Course in a Nutshell</h2>
+
+    <p>
+        <strong>Collecting Digital Data</strong> is a one-day (10:00–16:00) online training course for social science PhD students, delivered as part of the
+        <strong>Scottish Graduate School of Social Science (SGSSS)</strong> methods training programme. It introduces two core techniques for collecting data from the web — <strong>web scraping</strong> and <strong>APIs</strong> — and a modern skill — <strong>using LLMs as coding assistants</strong>.
+    </p>
+
+    <div class="callout callout-magenta">
+        <div class="callout-title">Course philosophy</div>
+        The course prioritises <strong>APIs over web scraping</strong>. Web scraping is taught first (one practical) to establish the request–parse–extract–save pattern, but the majority of the day is spent on APIs (two practicals + a challenge). This reflects the reality that APIs are more reliable, more ethical, and more commonly used in contemporary computational social science.
+    </div>
+
+    <h3>Target audience</h3>
+    <ul>
+        <li>Social science PhD students with <strong>no prior programming experience</strong> required</li>
+        <li>Students choose either <strong>Python or R</strong> — all practicals are available in both languages</li>
+        <li>All code runs in <strong>Google Colab</strong> (no local installation needed)</li>
+    </ul>
+
+    <h3>Learning outcomes</h3>
+    <p>By the end of the course, students will be able to:</p>
+    <ol>
+        <li>Explain how the web works (HTTP requests, HTML, JSON) and why this matters for data collection</li>
+        <li>Write code to scrape data from a website using a request–parse–extract–save workflow</li>
+        <li>Use a web API to collect structured data, handling parameters, pagination, and rate limits</li>
+        <li>Navigate API documentation and apply the same data collection pattern to unfamiliar APIs</li>
+        <li>Critically evaluate LLM-generated code and understand when to trust (and not trust) it</li>
+    </ol>
+</section>
+
+<!-- ============================================================ -->
+<!-- 2. COURSE COMPONENTS -->
+<!-- ============================================================ -->
+<section id="components">
+    <h2>2. Course Components</h2>
+
+    <h3>Materials overview</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Component</th>
+                <th>Format</th>
+                <th>Files</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>4 Lectures</strong></td>
+                <td>LaTeX/Beamer slide decks (PDF)</td>
+                <td><code>presentations/lecture-{1,2,3,4}-*.tex</code></td>
+            </tr>
+            <tr>
+                <td><strong>4 Practicals</strong> (×2 languages)</td>
+                <td>Jupyter notebooks for Google Colab</td>
+                <td><code>code/practical-{1,2,3,4}-*-{Python,R}.ipynb</code></td>
+            </tr>
+            <tr>
+                <td><strong>Installation guide</strong></td>
+                <td>Markdown</td>
+                <td><code>installation/README.md</code></td>
+            </tr>
+            <tr>
+                <td><strong>Reading list</strong></td>
+                <td>Markdown</td>
+                <td><code>reading/README.md</code></td>
+            </tr>
+            <tr>
+                <td><strong>Course design docs</strong></td>
+                <td>Markdown</td>
+                <td><code>docs/plans/*.md</code></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>File structure</h3>
+    <div class="file-tree">
+collecting-digital-data/<br>
+├── presentations/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# LaTeX/Beamer slide decks<br>
+│&nbsp;&nbsp; ├── lecture-1-welcome-and-how-the-web-works.tex<br>
+│&nbsp;&nbsp; ├── lecture-2-what-are-apis.tex<br>
+│&nbsp;&nbsp; ├── lecture-3-api-landscape.tex<br>
+│&nbsp;&nbsp; ├── lecture-4-llms-as-coding-assistants.tex<br>
+│&nbsp;&nbsp; └── sgsss-beamer-preamble.tex &nbsp;# Shared theme<br>
+├── code/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Jupyter notebooks (Python + R)<br>
+│&nbsp;&nbsp; ├── practical-1-web-scraping-*-{Python,R}.ipynb<br>
+│&nbsp;&nbsp; ├── practical-2-uk-police-api-*-{Python,R}.ipynb<br>
+│&nbsp;&nbsp; ├── practical-3-api-challenge-*-{Python,R}.ipynb<br>
+│&nbsp;&nbsp; └── practical-4-llm-showdown-*-{Python,R}.ipynb<br>
+├── docs/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Course design documentation<br>
+├── installation/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Setup guides<br>
+├── reading/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Recommended resources<br>
+├── img/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Logos and images<br>
+├── admin/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Feedback, event info<br>
+└── README.md
+    </div>
+
+    <h3>Lectures</h3>
+
+    <table>
+        <thead>
+            <tr><th>#</th><th>Title</th><th>Duration</th><th>Key content</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Welcome &amp; How the Web Works</td>
+                <td>30 min</td>
+                <td>Course outline, setup, HTTP request–response, HTML basics, structured vs unstructured data, ethics &amp; legality, research examples</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>What Are APIs?</td>
+                <td>15 min</td>
+                <td>API concept, APIs vs scraping comparison, anatomy of an API call, reading documentation, JSON deep-dive, research examples</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>The API Landscape</td>
+                <td>15 min</td>
+                <td>Categories of APIs (government, international, academic, geospatial, AI), specific API walkthroughs, finding more APIs, research examples</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>LLMs as Coding Assistants</td>
+                <td>15 min</td>
+                <td>What LLMs are, paid vs open models, prompting for code, strengths &amp; weaknesses, critical evaluation, research examples</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Practicals</h3>
+
+    <table>
+        <thead>
+            <tr><th>#</th><th>Title</th><th>Duration</th><th>Key content</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Web Scraping</td>
+                <td>45 min</td>
+                <td>Simple text extraction (httpbin.org), multi-page scraping (Edinburgh warm spaces directory), exercise (library locations)</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>UK Police API</td>
+                <td>60 min</td>
+                <td>First API call, working with JSON, parameterised requests, looping over all forces, data analysis &amp; visualisation</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>API Challenge</td>
+                <td>60 min</td>
+                <td>Choose-your-own-API: UK Parliament, World Bank, or ONS. Scaffolded tasks with solutions in appendix</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>LLM Showdown</td>
+                <td>35 min</td>
+                <td>Submit prompts to 3 LLMs, paste &amp; run generated code, evaluate against criteria, group discussion</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<!-- ============================================================ -->
+<!-- 3. HOW TO RUN THE COURSE -->
+<!-- ============================================================ -->
+<section id="running">
+    <h2>3. How to Run the Course</h2>
+
+    <h3>Schedule</h3>
+
+    <div class="schedule-block">
+        <div class="schedule-time">10:00–10:30</div>
+        <div class="schedule-content">
+            <div class="session-name">Lecture 1: Welcome &amp; How the Web Works</div>
+            <div class="session-detail">Deliver Beamer slides. Ensure all students can access Colab. Ask students to choose Python or R.</div>
+        </div>
+    </div>
+    <div class="schedule-block">
+        <div class="schedule-time">10:30–11:15</div>
+        <div class="schedule-content">
+            <div class="session-name">Practical 1: Web Scraping</div>
+            <div class="session-detail">Students work through notebook at their own pace. Circulate/monitor chat for questions. The simple example takes ~15 min; the multi-page scraping ~20 min; the exercise ~10 min.</div>
+        </div>
+    </div>
+    <div class="schedule-block">
+        <div class="schedule-time">11:15–11:30</div>
+        <div class="schedule-content">
+            <div class="session-name">Break</div>
+            <div class="session-detail">Encourage students to step away from screens.</div>
+        </div>
+    </div>
+    <div class="schedule-block">
+        <div class="schedule-time">11:30–11:45</div>
+        <div class="schedule-content">
+            <div class="session-name">Lecture 2: What Are APIs?</div>
+            <div class="session-detail">Short, focused lecture. Emphasise the API-as-translator analogy. The "Research in Action" slide is a good discussion prompt.</div>
+        </div>
+    </div>
+    <div class="schedule-block">
+        <div class="schedule-time">11:45–12:45</div>
+        <div class="schedule-content">
+            <div class="session-name">Practical 2: UK Police API</div>
+            <div class="session-detail">The longest practical. The looping section (parameterised requests over all forces) takes ~5 min to execute due to rate limiting — use this time for Q&amp;A or discussion. The analysis section at the end provides a satisfying payoff.</div>
+        </div>
+    </div>
+    <div class="schedule-block">
+        <div class="schedule-time">12:45–13:30</div>
+        <div class="schedule-content">
+            <div class="session-name">Lunch</div>
+            <div class="session-detail">45-minute break.</div>
+        </div>
+    </div>
+    <div class="schedule-block">
+        <div class="schedule-time">13:30–13:45</div>
+        <div class="schedule-content">
+            <div class="session-name">Lecture 3: API Landscape Survey</div>
+            <div class="session-detail">Walk through the API categories. Encourage students to think about which APIs might be relevant to their own research. Preview the three options for Practical 3.</div>
+        </div>
+    </div>
+    <div class="schedule-block">
+        <div class="schedule-time">13:45–14:45</div>
+        <div class="schedule-content">
+            <div class="session-name">Practical 3: API Challenge</div>
+            <div class="session-detail">Students choose from 3 APIs (or bring their own). This is the most independent practical — students navigate documentation and solve problems with less scaffolding. Solutions are in the appendix. Students who finish early can attempt the stretch task.</div>
+        </div>
+    </div>
+    <div class="schedule-block">
+        <div class="schedule-time">14:45–15:00</div>
+        <div class="schedule-content">
+            <div class="session-name">Break</div>
+            <div class="session-detail">Encourage movement. Students may be fatigued by this point — the change of activity in P4 helps.</div>
+        </div>
+    </div>
+    <div class="schedule-block">
+        <div class="schedule-time">15:00–15:15</div>
+        <div class="schedule-content">
+            <div class="session-name">Lecture 4: LLMs as Coding Assistants</div>
+            <div class="session-detail">Brief, discussion-oriented. Students likely have strong opinions about LLMs already — draw these out.</div>
+        </div>
+    </div>
+    <div class="schedule-block">
+        <div class="schedule-time">15:15–15:50</div>
+        <div class="schedule-content">
+            <div class="session-name">Practical 4: LLM Showdown</div>
+            <div class="session-detail">This changes the pace — less coding, more evaluation and discussion. Students submit prompts to LLMs, paste outputs, and assess them. Can be run as a live demo with group discussion if time is short.</div>
+        </div>
+    </div>
+    <div class="schedule-block">
+        <div class="schedule-time">15:50–16:00</div>
+        <div class="schedule-content">
+            <div class="session-name">Wrap-up &amp; Q&amp;A</div>
+            <div class="session-detail">Summarise key takeaways, point to reading list and resources, collect feedback.</div>
+        </div>
+    </div>
+
+    <h3>Before the course</h3>
+    <ol>
+        <li><strong>Share the course README</strong> with students at least 2 days in advance. It contains links to all notebooks and setup instructions.</li>
+        <li><strong>Check that Colab links work.</strong> Test each "Open in Colab" badge for both Python and R notebooks.</li>
+        <li><strong>Compile the slide decks.</strong> Run <code>pdflatex</code> (with <code>--shell-escape</code> for minted) on each lecture <code>.tex</code> file. The preamble file must be in the same directory.</li>
+        <li><strong>Test the APIs.</strong> The UK Police API, Parliament API, World Bank API, and ONS API are all free and require no authentication, but availability can vary. Run each notebook end-to-end the day before.</li>
+        <li><strong>Prepare a backup plan.</strong> If an API is down, the notebooks can still be discussed using the expected output. Consider having screenshots of key outputs.</li>
+    </ol>
+
+    <h3>During the course</h3>
+
+    <div class="callout callout-green">
+        <div class="callout-title">Delivery model: Short lectures + self-paced practicals</div>
+        The course alternates between short lectures (15–30 min) and longer self-paced practicals (35–60 min). This was the most praised aspect of the course in student feedback (6/8 students). Resist the temptation to extend lectures — keep them tight and let students spend time coding.
+    </div>
+
+    <ul>
+        <li><strong>Lectures:</strong> Present the Beamer slides. Keep to time. Use the "Research in Action" slides to connect techniques to real social science research.</li>
+        <li><strong>Practicals:</strong> Students work through notebooks at their own pace. Monitor the chat (if online) or circulate (if in person) for questions. Do not present the notebooks — students read and run them independently.</li>
+        <li><strong>Exercises:</strong> Each practical ends with an exercise. Students who finish early can attempt stretch tasks or explore alternative data sources. Students who don't finish the exercise can refer to the solution in the appendix.</li>
+        <li><strong>Pacing:</strong> Students work at different speeds. The exercises and stretch tasks provide natural differentiation. Do not hold back fast students or rush slow ones — the notebooks are designed for asynchronous reference after the course.</li>
+        <li><strong>Technical issues:</strong> Most issues relate to Colab runtime (R kernel not selected, runtime disconnected). A quick troubleshooting check: "Have you selected the right runtime?" covers 80% of problems.</li>
+    </ul>
+
+    <h3>After the course</h3>
+    <ul>
+        <li>Share the course materials (notebooks, slides, reading list) for students to keep</li>
+        <li>Collect feedback using the SGSSS feedback form</li>
+        <li>Review feedback and update materials for the next iteration</li>
+    </ul>
+</section>
+
+<!-- ============================================================ -->
+<!-- 4. PEDAGOGY -->
+<!-- ============================================================ -->
+<section id="pedagogy">
+    <h2>4. Pedagogy</h2>
+
+    <h3>Overarching approach</h3>
+    <p>
+        The course follows a <strong>short-lecture-then-practice</strong> model inspired by Software Carpentry and Data Carpentry workshops.
+        Each topic is introduced with a brief, focused lecture (15–30 minutes) that establishes conceptual foundations, immediately followed by a
+        longer self-paced practical (35–60 minutes) where students apply what they've learned by writing and running code.
+    </p>
+
+    <div class="callout callout-green">
+        <div class="callout-title">Why this works</div>
+        Research on teaching programming to novices (e.g., Barba et al., 2019; Wilson, 2014) consistently finds that:
+        <ul style="margin-top: 0.3rem;">
+            <li><strong>Active learning</strong> outperforms passive instruction — students learn to code by coding, not by watching</li>
+            <li><strong>Short feedback loops</strong> (write code → run it → see output) build confidence and catch misunderstandings early</li>
+            <li><strong>Worked examples</strong> followed by similar exercises are more effective than abstract instruction for beginners</li>
+        </ul>
+    </div>
+
+    <h3>The teaching cycle</h3>
+
+    <div class="pedagogy-cycle">
+        <div class="pedagogy-step">
+            <div class="step-icon">&#x1f4d6;</div>
+            <div class="step-label">Motivate</div>
+            <div class="step-desc">Lecture connects technique to real research</div>
+        </div>
+        <div class="pedagogy-arrow">&rarr;</div>
+        <div class="pedagogy-step">
+            <div class="step-icon">&#x1f4bb;</div>
+            <div class="step-label">Demonstrate</div>
+            <div class="step-desc">Notebook walks through worked example</div>
+        </div>
+        <div class="pedagogy-arrow">&rarr;</div>
+        <div class="pedagogy-step">
+            <div class="step-icon">&#x270d;</div>
+            <div class="step-label">Practice</div>
+            <div class="step-desc">Exercise applies pattern to new data</div>
+        </div>
+        <div class="pedagogy-arrow">&rarr;</div>
+        <div class="pedagogy-step">
+            <div class="step-icon">&#x1f4ac;</div>
+            <div class="step-label">Reflect</div>
+            <div class="step-desc">Discussion &amp; transition to next topic</div>
+        </div>
+    </div>
+
+    <h3>Notebook design principles</h3>
+
+    <p>The Jupyter notebooks are the primary learning resource. They are designed with the following principles:</p>
+
+    <h4>1. Scaffolded progression</h4>
+    <p>
+        Each notebook follows a consistent arc: <strong>simple example → realistic example → independent exercise</strong>.
+        The simple example (e.g., scraping a single page) establishes the core pattern with minimal complexity.
+        The realistic example (e.g., scraping an A-to-Z directory) adds loops, error handling, and data management.
+        The exercise asks students to apply the same pattern to a new dataset with skeleton code and gaps to fill.
+    </p>
+
+    <h4>2. Rich markdown scaffolding</h4>
+    <p>
+        Every code cell is preceded by a markdown cell that explains <strong>what the code does and why</strong>.
+        This serves two purposes: during the course, it helps students understand unfamiliar code before running it;
+        after the course, it makes the notebooks useful as reference material. Key code blocks include
+        "What this code does" annotations that describe the logic in plain English before students encounter the syntax.
+    </p>
+
+    <h4>3. Self-contained and language-parallel</h4>
+    <p>
+        Each notebook is fully self-contained — it includes all imports, data, and instructions needed to run from start to finish.
+        Every practical is available in both Python and R, with equivalent functionality and identical explanatory text.
+        This allows students to choose their preferred language without missing any content.
+    </p>
+
+    <h4>4. Exercise design</h4>
+    <p>
+        Exercises use a <strong>skeleton-code-with-gaps</strong> pattern: the overall structure is provided, but key lines are replaced with
+        <code># INSERT CODE HERE</code> comments. This reduces the blank-page problem while still requiring students to think through the logic.
+        Full solutions are provided in an appendix at the end of each notebook.
+        Exercises also include a flexibility note encouraging students to bring their own data or use a different API if preferred.
+    </p>
+
+    <h4>5. Pseudo-code before real code</h4>
+    <p>
+        Before introducing any multi-step workflow, the notebooks present it as <strong>pseudo-code</strong> — a plain-English description
+        of the algorithm. This cultivates computational thinking (breaking problems into steps) before students engage with language-specific syntax.
+    </p>
+
+    <h3>Lecture design principles</h3>
+    <ul>
+        <li><strong>Short and focused:</strong> 15–30 minutes maximum. Lectures establish conceptual foundations; practicals build skills.</li>
+        <li><strong>Visual explanations:</strong> TikZ diagrams illustrate abstract concepts (HTTP cycle, API architecture, JSON structure, LLM workflow).</li>
+        <li><strong>Research in Action:</strong> Each lecture includes a slide showing published social science research that uses the technique being taught, grounding the method in real scholarly practice.</li>
+        <li><strong>Accessible design:</strong> WCAG AA contrast ratios, minimum 20pt body text, no colour-only information, Fira Sans/Mono fonts for readability.</li>
+    </ul>
+
+    <h3>Differentiation</h3>
+    <p>Students arrive with varying levels of programming experience. The course handles this through:</p>
+    <ul>
+        <li><strong>Self-pacing:</strong> Faster students can work ahead; slower students can take more time on earlier sections</li>
+        <li><strong>Stretch tasks:</strong> Practical 3 includes optional Task 4 extensions for advanced students</li>
+        <li><strong>Flexible exercises:</strong> Students can use the provided dataset or bring their own</li>
+        <li><strong>Solution appendices:</strong> Students who get stuck can check the solution and continue learning</li>
+        <li><strong>Asynchronous reference:</strong> Notebooks are designed to be useful after the course for self-study</li>
+    </ul>
+</section>
+
+<!-- ============================================================ -->
+<!-- 5. AREAS FOR IMPROVEMENT -->
+<!-- ============================================================ -->
+<section id="improvement">
+    <h2>5. Areas for Improvement</h2>
+
+    <p>Based on student feedback (8 responses, February 2026 delivery) and instructor reflection, the following areas have been identified for future improvement.</p>
+
+    <h3>What students valued (keep doing)</h3>
+    <table>
+        <thead>
+            <tr><th>Theme</th><th>Mentions</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Mix of short lectures + self-paced practicals</td><td>6/8</td></tr>
+            <tr><td>Quality and organisation of Colab notebooks/workbooks</td><td>4/8</td></tr>
+            <tr><td>Pace of delivery</td><td>3/8</td></tr>
+            <tr><td>Clarity of explanations</td><td>3/8</td></tr>
+            <tr><td>Materials suited for later reference/consultation</td><td>multiple</td></tr>
+        </tbody>
+    </table>
+
+    <h3>Changes implemented (based on Feb 2026 feedback)</h3>
+    <table>
+        <thead>
+            <tr><th>Feedback theme</th><th>Count</th><th>Action taken</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>More explanation of practicals / coding aspects</td>
+                <td>2/8</td>
+                <td>Added "What this code does" annotations before key code cells in P1 and P2 notebooks. Richer markdown scaffolding throughout.</td>
+            </tr>
+            <tr>
+                <td>Real-world examples and applications</td>
+                <td>2/8</td>
+                <td>Added "Research in Action" slides to all four lectures, citing published social science papers that use web scraping, APIs, and LLMs.</td>
+            </tr>
+            <tr>
+                <td>Space to apply to own projects</td>
+                <td>1/8</td>
+                <td>Added flexibility notes to all exercise sections, encouraging students to bring their own data, URLs, or APIs.</td>
+            </tr>
+            <tr>
+                <td>Better guidance for working outside Colab</td>
+                <td>1/8</td>
+                <td>Expanded installation guide with step-by-step local setup instructions for Python, R, and Jupyter on Windows, macOS, and Linux, plus a troubleshooting table.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Future improvements to consider</h3>
+
+    <div class="callout callout-magenta">
+        <div class="callout-title">More time on practicals (3/8 students)</div>
+        The most common suggestion. The current schedule is already tight. Options: (a) reduce Lecture 1 from 30 to 20 min by moving the ethics slide into Practical 1's introductory text; (b) make Practical 4 (LLM Showdown) optional/homework, freeing 35 min for earlier practicals; (c) extend the course to a full 6 hours (10:00–16:30).
+    </div>
+
+    <div class="callout callout-green">
+        <div class="callout-title">Peer learning / breakout rooms (1/8 students)</div>
+        Consider adding a brief breakout activity during Practical 3 (API Challenge) — for example, pair students who chose different APIs and have them explain their approach to each other. This would add variety and peer learning without requiring additional content.
+    </div>
+
+    <h4>Other ideas for future iterations</h4>
+    <ul>
+        <li><strong>Activity variety:</strong> One student noted that 5 hours is tiring even with breaks. Consider adding a short non-coding activity (e.g., a "find the API" scavenger hunt during Lecture 3, or a live polling question during Lecture 4).</li>
+        <li><strong>Pre-course preparation:</strong> Offer an optional 30-minute "Python/R basics" video for students with zero programming experience, so they arrive comfortable with variables, loops, and function calls.</li>
+        <li><strong>Post-course office hours:</strong> Offer a 30-minute drop-in session 1–2 weeks after the course for students who are applying the techniques to their own research.</li>
+        <li><strong>Authentication:</strong> The current course avoids APIs that require authentication. A future version could include a brief section on API keys (e.g., using the OpenAI API with a key), as many research-relevant APIs require this.</li>
+        <li><strong>Error handling depth:</strong> The notebooks use basic <code>try/except</code> (Python) or <code>tryCatch()</code> (R). More advanced error handling (retries, exponential backoff) could be added as an appendix for interested students.</li>
+        <li><strong>Data ethics case study:</strong> Replace or supplement the ethics bullet points in Lecture 1 with a short case study (e.g., the Clearview AI scraping controversy, or the Cambridge Analytica API misuse) to make the ethical discussion more concrete.</li>
+    </ul>
+
+    <h3>Technical maintenance</h3>
+    <ul>
+        <li><strong>API availability:</strong> Test all API endpoints before each delivery. The Edinburgh Council directory pages may change structure. The ONS API is in beta and may change.</li>
+        <li><strong>Google Colab updates:</strong> Colab occasionally changes its interface or default package versions. Test notebooks in Colab before each delivery.</li>
+        <li><strong>LaTeX compilation:</strong> The Beamer slides require <code>pdflatex --shell-escape</code> (for minted syntax highlighting), plus the packages listed in <code>sgsss-beamer-preamble.tex</code>. A full TeX Live installation is recommended.</li>
+    </ul>
+</section>
+
+</main>
+
+<footer>
+    <strong>Collecting Digital Data: The Role of Web-scraping and APIs</strong><br>
+    SGSSS Training Course &middot; Dr Diarmuid McDonnell &middot; <a href="https://www.brawdata.co.uk">Braw Data Ltd</a> &middot;
+    <a href="https://www.gradelinstituteofcharity.co.uk/diarmuid-mcdonnell">Gradel Institute of Charity, University of Oxford</a>
+</footer>
+
+</body>
+</html>
